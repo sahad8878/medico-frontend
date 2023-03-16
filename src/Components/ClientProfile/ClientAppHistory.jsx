@@ -19,7 +19,6 @@ function ClientAppHistory() {
       })
       .then((response) => {
         if (response.data.success) {
-          console.log(response.data.confirmedAppointments);
           setAppointments(response.data.confirmedAppointments);
           setIsLoading(false);
         } else {

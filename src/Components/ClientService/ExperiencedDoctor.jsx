@@ -12,7 +12,6 @@ function ExperiencedDoctors() {
       .get("/getExperiencedDoctors", { headers: { accesstoken: clientToken } })
       .then((response) => {
         if (response.data.success) {
-          console.log(response.data.doctors);
           setDoctors(response.data.doctors);
         }
       });

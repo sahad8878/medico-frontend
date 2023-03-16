@@ -24,7 +24,6 @@ function ClientProfile() {
     axios
       .get("/getClietProfile", { headers: { accesstoken: clientToken } })
       .then((response) => {
-        console.log(response);
         setClient(response.data.client);
       });
   }, [refresh,clientToken]);
@@ -173,24 +172,24 @@ function ClientProfile() {
                 {/*  */}
                 <div className="w-full  flex justify-center md:justify-end">
                   <div className="bg-[#EDF4FE]  ">
-                    <div class="flex flex-col items-center p-5 pb-5">
+                    <div className="flex flex-col items-center p-5 pb-5">
                       {client.clientImage ? (
                         <img
-                          class="w-52 h-52 mb-3 rounded-full shadow-lg"
+                          className="w-52 h-52 mb-3 rounded-full shadow-lg"
                           src={client.clientImage}
                           alt="client"
                         />
                       ) : (
                         <img
-                          class="w-52 h-52 mb-3 rounded-full shadow-lg"
+                          className="w-52 h-52 mb-3 rounded-full shadow-lg"
                           src={profile}
                           alt="client"
                         />
                       )}
-                      <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+                      <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
                         {client.fName} {client.lName}
                       </h5>
-                      <span class="text-sm text-gray-500 dark:text-gray-400">
+                      <span className="text-sm text-gray-500 dark:text-gray-400">
                         {client.email}
                       </span>
                     </div>

@@ -2,9 +2,9 @@ import { message } from "antd";
 import React, { useState, useEffect } from "react";
 import axios from "../../Axios/Axios";
 import { InfinitySpin } from "react-loader-spinner";
-
 import { ref, uploadString, getDownloadURL } from "firebase/storage";
 import { storage } from "../../Firebase/confic";
+
 
 function DoctorProfile() {
   const [Doctor, setDoctor] = useState([]);
@@ -32,7 +32,6 @@ function DoctorProfile() {
 
   useEffect(() => {
     axios.get("/doctor/getdepartments").then((response) => {
-      console.log(response.data);
       setDepartments(response.data.departments);
     });
   }, [refresh]);

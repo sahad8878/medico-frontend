@@ -48,9 +48,6 @@ function DoctorDashboard() {
       <div className="flex justify-center content-center py-5">
         <h1 className="text-2xl font-serif  font-semibold">Dashboard</h1>
       </div>
-
-      {/*  */}
-
       <div className=" grid grid-cols-1 lg:grid-cols-3  gap-4 p-4 mb-10">
         <div className="flex flex-col w-60 h-24 shadow-xl items-center bg-white opacity-60 border border-gray-200 rounded-lg  md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer">
           <img className=" ml-4 h-14" src={clientIcon} alt="logo" />

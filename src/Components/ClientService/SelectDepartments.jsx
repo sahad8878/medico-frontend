@@ -19,7 +19,6 @@ function SelectDepartments() {
           headers: { accesstoken: clientToken },
         })
         .then((response) => {
-          console.log(response, "res");
           setDepartments(response.data);
           setIsLoading(false);
         });
@@ -33,31 +32,29 @@ function SelectDepartments() {
         Select departments
       </h1>
       <div className="">
-        {isLoading ?
-        
-        (
+        {isLoading ? (
           <div className=" flex justify-center">
             <InfinitySpin width="200" color="#194569" />
           </div>
         ) : (
           <div>
-          {departments.length === 0 ?
-        <div className="flex p-16 justify-center font-serif text-[#194569] text-xl"> Departments Not Exist..!</div>
-        
-          :
-          <div
-            id="content"
-            className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-6 p-5 "
-          >
-            {departments.map((department) => (
-              <Link to={`/departmentDoctors/ ${department._id}`}>
-                <SingleDipartment department={department} />
-              </Link>
-            ))}
+            {departments.length === 0 ? (
+              <div className="flex p-16 justify-center font-serif text-[#194569] text-xl">
+                Departments Not Exist..!
+              </div>
+            ) : (
+              <div
+                id="content"
+                className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-6 p-5 "
+              >
+                {departments.map((department) => (
+                  <Link to={`/departmentDoctors/ ${department._id}`}>
+                    <SingleDipartment department={department} key={department._id} />
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
-
-            }
-            </div>
         )}
       </div>
     </div>
