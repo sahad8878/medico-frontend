@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { message,Modal } from "antd";
+import { message, Modal } from "antd";
 import axios from "../../Axios/Axios";
 import Moment from "react-moment";
 
@@ -18,61 +18,57 @@ function SingleDoctor({ doctor, refresh, setRefresh }) {
   // Block doctor
   const blockDoctor = (id) => {
     Modal.confirm({
-      title: 'Are you sure you want to Block this Doctor?',
-      okText: 'Yes',
-      okType: 'danger',
-      cancelText: 'No',
+      title: "Are you sure you want to Block this Doctor?",
+      okText: "Yes",
+      okType: "danger",
+      cancelText: "No",
       onOk() {
         axios
-      .patch(
-        "/admin/blockDoctor",
-        { id },
-        { headers: { admintoken: adminToken } }
-      )
-      .then((response) => {
-        if (response.data.success) {
-          console.log(response.data);
-          message.success(response.data.message);
-          setRefresh(!refresh);
-        } else {
-          message.error(response.data.message);
-        }
-      });
+          .patch(
+            "/admin/blockDoctor",
+            { id },
+            { headers: { admintoken: adminToken } }
+          )
+          .then((response) => {
+            if (response.data.success) {
+              console.log(response.data);
+              message.success(response.data.message);
+              setRefresh(!refresh);
+            } else {
+              message.error(response.data.message);
+            }
+          });
       },
       onCancel() {},
     });
-
-   
   };
 
   // UnBlock Doctor
   const unBlockDoctor = (id) => {
-    
     Modal.confirm({
-      title: 'Are you sure you want to unBlock this Doctor?',
-      okText: 'Yes',
-      okType: 'danger',
-      cancelText: 'No',
+      title: "Are you sure you want to unBlock this Doctor?",
+      okText: "Yes",
+      okType: "danger",
+      cancelText: "No",
       onOk() {
         axios
-        .patch(
-          "/admin/unBlockDoctor",
-          { id },
-          { headers: { admintoken: adminToken } }
-        )
-        .then((response) => {
-          if (response.data.success) {
-            console.log(response.data);
-            message.success(response.data.message);
-            setRefresh(!refresh);
-          } else {
-            message.error(response.data.message);
-          }
-        });
+          .patch(
+            "/admin/unBlockDoctor",
+            { id },
+            { headers: { admintoken: adminToken } }
+          )
+          .then((response) => {
+            if (response.data.success) {
+              console.log(response.data);
+              message.success(response.data.message);
+              setRefresh(!refresh);
+            } else {
+              message.error(response.data.message);
+            }
+          });
       },
       onCancel() {},
     });
-   
   };
 
   return (
@@ -137,7 +133,6 @@ function SingleDoctor({ doctor, refresh, setRefresh }) {
                       alt=""
                     />
                   </div>
-                  {/*  */}
 
                   <div class="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
                     <div class="flow-root">
@@ -145,20 +140,19 @@ function SingleDoctor({ doctor, refresh, setRefresh }) {
                         role="list"
                         class="divide-y divide-gray-200 dark:divide-gray-700"
                       >
-                        {
-                          <li class="py-3 sm:py-4">
-                            <div class="flex items-center space-x-4">
-                              <div class="flex-1 min-w-0">
-                                <p class="text-sm font-medium text-gray-500  truncate dark:text-white">
-                                  Education:
-                                </p>
-                                <p class="text-base font-medium text-gray-900 truncate dark:text-gray-400">
-                                  {doctor.education}
-                                </p>
-                              </div>
+                        <li class="py-3 sm:py-4">
+                          <div class="flex items-center space-x-4">
+                            <div class="flex-1 min-w-0">
+                              <p class="text-sm font-medium text-gray-500  truncate dark:text-white">
+                                Education:
+                              </p>
+                              <p class="text-base font-medium text-gray-900 truncate dark:text-gray-400">
+                                {doctor.education}
+                              </p>
                             </div>
-                          </li>
-                        }
+                          </div>
+                        </li>
+
                         <li class="py-3 sm:py-4">
                           <div class="flex items-center space-x-4">
                             <div class="flex-1 min-w-0">

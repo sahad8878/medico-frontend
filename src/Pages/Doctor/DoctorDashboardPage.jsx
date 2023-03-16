@@ -39,7 +39,7 @@ function DoctorDashboardPage() {
      } 
     })
    
-  },[refresh,doctorToken,navigate])
+  },[refresh,doctorToken,navigate,dispatch])
 
 
 

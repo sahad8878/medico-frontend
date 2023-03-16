@@ -17,8 +17,8 @@ function DoctorProfile() {
 
   const doctor = JSON.parse(localStorage.getItem("doctorToken"));
   const doctorToken = doctor.doctorToken;
+  const doctorId = doctor.doctorId;
   useEffect(() => {
-    const doctorId = doctor.doctorId;
     axios
       .get(`/doctor/getDoctorDetails/${doctorId}`, {
         headers: { doctortoken: doctorToken },
@@ -28,7 +28,7 @@ function DoctorProfile() {
           setDoctor(response.data.doctor);
         }
       });
-  }, [refresh, doctorToken]);
+  }, [refresh, doctorToken,doctorId]);
 
   useEffect(() => {
     axios.get("/doctor/getdepartments").then((response) => {

@@ -3,7 +3,6 @@ import { message } from "antd";
 import { Link } from "react-router-dom";
 import { InfinitySpin } from "react-loader-spinner";
 import TouchAppIcon from '@mui/icons-material/TouchApp';
-import Moment from "react-moment";
 import axios from "../../Axios/Axios";
 import { useDispatch } from "react-redux";
 import { setLogin } from "../../Store/Slice/ClientSlice";
@@ -32,7 +31,7 @@ function DoctorAppointments() {
           message.error(response.data.error);
         }
       });
-  }, [refresh]);
+  }, [refresh,doctorToken]);
 
   // mark as ckecked  appointment
   const checkedAppointment = (id) => {
