@@ -12,13 +12,13 @@ function DoctorSidebar({ doctor }) {
         <div className="p-7 mt-2 rounded-lg mx-2 h-72 w-56 lg:w-64 shadow-xl">
           {doctor.doctorImg ? (
             <img
-              class="w-52 h-52 mb-3 rounded-full shadow-lg"
+              class="w-52 h-52 mb-3 rounded-full shadow-lg object-fill"
               src={doctor.doctorImg}
               alt="doctor prifile "
             />
           ) : (
             <img
-              class="w-52 h-52 mb-3 rounded-full shadow-lg"
+              class="w-52 h-52 mb-3 rounded-full shadow-lg object-fill"
               src={profile}
               alt="doctor prifile "
             />
