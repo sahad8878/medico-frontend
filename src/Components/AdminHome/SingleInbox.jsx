@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import { message } from 'antd';
+import { message,Modal } from 'antd';
 import Moment from 'react-moment';
 
 import axios from '../../Axios/Axios'
@@ -19,28 +19,49 @@ function SingleInbox({penDoctor,refresh,setRefresh}) {
     
     // accept appointment
       const acceptAppointment = (id) =>{
+        Modal.confirm({
+          title: 'Are you sure you want to Accept this Doctor requist?',
+          okText: 'Yes',
+          okType: 'danger',
+          cancelText: 'No',
+          onOk() {
+            axios.patch('/admin/acceptAppointment',{id} ,{headers:{'admintoken':adminToken}}).then((response) => {
+              if(response.data.success){
+                message.success(response.data.message)
+                setRefresh(!refresh) 
+              }else{
+                message.error(response.data.message)
+              }
+            })
+          },
+          onCancel() {},
+        });
     
-        axios.patch('/admin/acceptAppointment',{id} ,{headers:{'admintoken':adminToken}}).then((response) => {
-          if(response.data.success){
-            message.success(response.data.message)
-            setRefresh(!refresh) 
-          }else{
-            message.error(response.data.message)
-          }
-        })
+       
       }
     
         // reject appointment requests
 
   const rejectAppointment = (id) =>{
-    axios.patch('/admin/rejectAppointment',{id} ,{headers:{'admintoken':adminToken}}).then((response) => {
-      if(response.data.success){
-        message.success(response.data.message)
-        setRefresh(!refresh)
-      }else{
-        message.error(response.data.message)
-      }
-    })
+    Modal.confirm({
+      title: 'Are you sure you want to Reject this Doctor requist?',
+      okText: 'Yes',
+      okType: 'danger',
+      cancelText: 'No',
+      onOk() {
+        axios.patch('/admin/rejectAppointment',{id} ,{headers:{'admintoken':adminToken}}).then((response) => {
+          if(response.data.success){
+            message.success(response.data.message)
+            setRefresh(!refresh)
+          }else{
+            message.error(response.data.message)
+          }
+        })
+      },
+      onCancel() {},
+    });
+
+   
   }
   
   return (

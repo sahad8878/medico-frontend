@@ -26,7 +26,7 @@ function AdminDepartment() {
         setDepartments(response.data.departments);
         setIsLoading(false);
       });
-  }, [refresh]);
+  }, [refresh,adminToken]);
 
   const handleOpenModal = () => {
     setIsOpen(true);

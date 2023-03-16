@@ -21,8 +21,7 @@ function DoctorAppointmentsPage() {
       const doctorToken = doctor.doctorToken
       axios.get(`/doctor/statusChecking`,{headers:{'doctortoken':doctorToken}}).then((response) => {
       const result = response.data
-      setDoctor(result.doctor)
-      console.log(result.doctorStatus,"aaa");
+      setDoctor(result.doctor);
       if(result.doctorStatus === "blocked"){
         message.error("Youn have been blocked")
         localStorage.removeItem("doctorToken");
@@ -40,7 +39,7 @@ function DoctorAppointmentsPage() {
        } 
       })
      
-    },[refresh])
+    },[refresh,dispatch,navigate])
 
   return (
     <>

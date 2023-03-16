@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import DoctorHome from "../../Components/DoctorHome/DoctorHome";
 import DoctorNavbar from "../../Components/Navbar/DoctorNavbar";
 import TopNav from "../../Components/TopNav/TopNav";
 import axios from "../../Axios/Axios";
@@ -7,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../../Components/Footer/Footer";
 import { message } from "antd";
 import DoctorProfile from "../../Components/DoctorHome/DoctorProfile";
-import DoctorDashboard from "../../Components/DoctorHome/DoctorDashboard";
 import DoctorSidebar from "../../Components/DoctorSidebar/DoctorSidebar";
 import { useDispatch } from "react-redux";
 import { setLogout } from "../../Store/Slice/DoctorSlice";
@@ -47,7 +45,7 @@ function DoctorDetailsPage() {
           setRefresh(!refresh);
         }
       });
-  }, [refresh]);
+  }, [refresh,dispatch,navigate]);
   return (
 
 

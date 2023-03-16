@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { message } from "antd";
 import axios from "../../Axios/Axios";
 import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
@@ -14,12 +14,7 @@ function PayPalButton({selectedDate,token,schedulTime,doctorId,consultationFees,
  const navigate = useNavigate()
     const client = JSON.parse(localStorage.getItem("clientToken"));
     const clientToken = client.clientToken;
-  
-  
-    const paypalOptions = {
-      "client-id":"AR9rPCNyMwEXNemm95XvdI32AEqLbAxrtV0Q1MLtScf_hvTo81IBAsiMiuiyY3oMI8WejvaXwZYbzRFr",
-    };
-  
+
     const createOrder = (data, actions) => {
       return actions.order.create({
         purchase_units: [
@@ -40,10 +35,8 @@ function PayPalButton({selectedDate,token,schedulTime,doctorId,consultationFees,
     };
     const onApprove =  (data, actions) => {
       return actions.order.capture().then(function (details){
-        console.log(details,"detailsssssssss");
+      
         setPaymentComplete(true);
-      //   console.log(notification._id );
-  console.log(schedulTime,"ttttttttttttttttt");
       axios
       .post("/postAppointment", {
         date: selectedDate,
@@ -56,7 +49,6 @@ function PayPalButton({selectedDate,token,schedulTime,doctorId,consultationFees,
       
       )
       .then((response) => {
-        console.log(response, "responseeee");
         const result = response.data;
         
         if (result.success) {

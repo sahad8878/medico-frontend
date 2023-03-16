@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { message } from "antd";
-import Moment from "react-moment";
 import { Link } from "react-router-dom";
 import { InfinitySpin } from "react-loader-spinner";
 
@@ -8,7 +7,6 @@ import axios from "../../Axios/Axios";
 
 function DoctorAppointmentHistory() {
   const [Appointments, setAppointments] = useState([]);
-  const [refresh, setRefresh] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const doctor = JSON.parse(localStorage.getItem("doctorToken"));
@@ -28,7 +26,7 @@ function DoctorAppointmentHistory() {
           message.error(response.data.message);
         }
       });
-  }, [refresh]);
+  }, [doctorToken]);
 
   return (
     <div className=" ">

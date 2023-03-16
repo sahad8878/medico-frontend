@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import Swal from "sweetalert2";
-import { message } from "antd";
+import React,{useState } from "react";
+import { message,Modal } from "antd";
 import axios from "../../Axios/Axios";
 import { InfinitySpin } from "react-loader-spinner";
 
@@ -42,18 +41,12 @@ function SingleDepartment({ department, setRefresh, refresh }) {
   const admin = JSON.parse(localStorage.getItem("adminToken"));
   const adminToken = admin.adminToken;
   function handleDelete(id) {
-    console.log(id);
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You will not be able to recover this data!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#d33",
-      cancelButtonColor: "#3085d6",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        // TODO: Implement delete logic
+     Modal.confirm({
+      title: 'Are you sure you want to delete this department?',
+      okText: 'Yes',
+      okType: 'danger',
+      cancelText: 'No',
+      onOk() {
         axios
           .delete(`/admin/deleteDepartment?id=${id}`, {
             headers: { admintoken: adminToken },
@@ -67,13 +60,10 @@ function SingleDepartment({ department, setRefresh, refresh }) {
               message.error(response.data.message);
             }
           });
-
-        Swal.fire("Deleted!", "Your data has been deleted.", "success");
-        setDropdown(!dropdown);
-      } else {
-        setDropdown(!dropdown);
-      }
+      },
+      onCancel() {},
     });
+
   }
   const validateFields = (data) => {
     let errors = {};
@@ -361,7 +351,6 @@ function SingleDepartment({ department, setRefresh, refresh }) {
             </div>
           </div>
         </div>
-        // Cardiologists, audiologists, dentists, ENT specialists, gynecologists, orthopedic surgeons, pediatricians, psychiatrists, veterinarians, radiologists, pulmonologists, endocrinologists, oncologists, neurologists, cardiothoracic surgeons,
       )}
     </>
   );

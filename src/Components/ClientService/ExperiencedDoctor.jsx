@@ -16,7 +16,7 @@ function ExperiencedDoctors() {
           setDoctors(response.data.doctors);
         }
       });
-  }, []);
+  },[clientToken]);
 
   const scrollLeft = () => {
     document.getElementById("contents").scrollLeft -= 400;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./DoctorCss.css";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { message } from "antd";
 import moment from "moment";
 import axios from "../../Axios/Axios";
@@ -19,8 +19,6 @@ function DoctorDetails() {
   const [showPaypal, setShowPaypal] = useState(false);
   const [availableDays, setavailableDays] = useState([]);
 
-  const navigate = useNavigate();
-
   const { doctorId } = useParams();
   const client = JSON.parse(localStorage.getItem("clientToken"));
   const clientToken = client.clientToken;
@@ -35,7 +33,7 @@ function DoctorDetails() {
           setavailableDays(response.data.availableDays);
         }
       });
-  }, []);
+  }, [clientToken,doctorId]);
 
   const handleAppointment = (event) => {
     try {
@@ -82,7 +80,6 @@ function DoctorDetails() {
     setSelectedTime(null);
   };
 
-  const activeDays = ["Monday", "Wednesday"];
 
   function tileClassName({ date }) {
     const dayOfWeek = date.toLocaleString("en-US", { weekday: "long" });
@@ -111,12 +108,7 @@ function DoctorDetails() {
       return true;
     }
   }
-  // function tileClassName({ date, view }) {
-  //   // Return "active" class for active days
-  //   if (view === "month" && activeDays.includes(date.toLocaleString("en-US", { weekday: "long" }))) {
-  //     return "active";
-  //   }
-  // }
+
   function handleDateChange(date) {
     console.log(date);
     const selectedDay = date.toLocaleString("en-us", { weekday: "long" });
@@ -138,13 +130,13 @@ function DoctorDetails() {
       console.log(error);
     }
   }
-  console.log(availability);
+
 
   return (
     <>
       <div className="container mx-auto px-4 pt-7">
         <div className="flex flex-wrap ">
-          {/*  */}
+       
           <div className="w-full md:w-5/12 px-3 flex justify-center lg:justify-end">
             <div className="bg-[#E3E8EE]   mt-[80px] sm:mt-[100px]   sm:mx-4   ">
               <div className="flex justify-center flex-col text-center  ">
@@ -159,7 +151,7 @@ function DoctorDetails() {
               </div>
             </div>
           </div>
-          {/*  */}
+        
           <div className="w-full md:w-6/12  px-3">
             <div className="lg:w-[600px] md-[400px] mt-7 md:mt-[100px] bg-[#E3E8EE] pb-10 p-5 sm:p-10 ">
               <div className="mb-4 sm:flex   ">
@@ -259,12 +251,7 @@ function DoctorDetails() {
                           >
                             Availabel Date
                           </label>
-                          {/* <input
-                          type="date"
-                          value={selectedDate}
-                          min={new Date()}
-                          onChange={handleDateChange}
-                        /> */}
+                         
                           <div className="ml-9">
                             <Calendar
                               tileDisabled={tileDisabled}

@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -17,14 +16,12 @@ function DoctorSignup() {
   const [errors, setErrors] = useState({});
 
   const [departments, setDepartments] = useState([]);
-
-  const [refresh, setRefresh] = useState(false);
   useEffect(() => {
     axios.get("/doctor/getdepartments").then((response) => {
       console.log(response.data);
       setDepartments(response.data.departments);
     });
-  }, [refresh]);
+  }, []);
 
   const validateFields = (data) => {
     let errors = {};

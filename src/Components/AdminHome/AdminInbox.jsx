@@ -1,26 +1,34 @@
 import React, { useState, useEffect } from "react";
 import { message } from "antd";
-
 import axios from "../../Axios/Axios";
+import Pagination from "@mui/material/Pagination";
 import SingleInbox from "./SingleInbox";
 
 function AdminInbox() {
   const [penDoctors, setpenDoctors] = useState([]);
   const [refresh, setRefresh] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+
   const admin = JSON.parse(localStorage.getItem("adminToken"));
   const adminToken = admin.adminToken;
   useEffect(() => {
     axios
-      .get("/admin/getPendingDoctors", { headers: { admintoken: adminToken } })
+      .get(`/admin/getPendingDoctors?page=${currentPage}&limit=5`, { headers: { admintoken: adminToken } })
       .then((response) => {
         if (response.data.success) {
           setpenDoctors(response.data.pendingDoctors);
+          setCurrentPage(response.data.currentPage);
+          setTotalPages(response.data.totalPages);
         } else {
           message.error(response.data.error);
         }
       });
-  }, [refresh]);
-
+  }, [refresh,currentPage,adminToken]);
+  
+  const handlePageChange = (event, value) => {
+    setCurrentPage(value);
+  };
   return (
     <>
       <div className=" p-6 sm:p-16 h-screen border-gray-200 ">
@@ -70,6 +78,18 @@ function AdminInbox() {
                 ))}
               </tbody>
             </table>
+            {totalPages !== 1 && (
+            <div className="flex justify-center p-2">
+                    <Pagination
+                      count={totalPages}
+                      page={currentPage}
+                      onChange={handlePageChange}
+                      variant="outlined"
+                      shape="rounded"
+                      color="primary"
+                    />
+            </div>
+                  )}
           </div>
         )}
       </div>

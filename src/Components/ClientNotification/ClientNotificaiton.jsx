@@ -29,7 +29,7 @@ function ClientNotificaiton() {
           message.error(result.message);
         }
       });
-  }, [refresh]);
+  }, [refresh,clientToken]);
 
   const handleMarkAllRead = () => {
     try {

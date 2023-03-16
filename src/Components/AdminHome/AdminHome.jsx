@@ -29,7 +29,7 @@ function AdminHome() {
           message.error(result.message);
         }
       });
-  }, []);
+  },[adminToken]);
   return (
     <>
       <div className=" p-6 sm:p-16 h-screen border-gray-200  pb-7 ">

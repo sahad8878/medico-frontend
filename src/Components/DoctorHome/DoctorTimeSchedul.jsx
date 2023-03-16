@@ -35,7 +35,7 @@ function DoctorTimeSchedule() {
           setSchedule(result.schedule);
         }
       });
-  }, [refresh]);
+  }, [refresh, doctorToken]);
 
   const handleOpenModal = () => {
     setIsOpen(true);
@@ -119,14 +119,15 @@ function DoctorTimeSchedule() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+
     let filled = true;
     for (let i = 0; i < timings.length; i++) {
-      const slots = parseInt(timings[i].slots)
+      const slots = parseInt(timings[i].slots);
       if (
-        timings[i].startTime == "" ||
-        timings[i].endTime == "" ||
-        isNaN(slots) || slots < 0
+        timings[i].startTime === "" ||
+        timings[i].endTime === "" ||
+        isNaN(slots) ||
+        slots < 0
       ) {
         filled = false;
       }
@@ -236,7 +237,10 @@ function DoctorTimeSchedule() {
                           <td className=" p-3 text-base text-gray-700 whitespace-nowrap">
                             {schedule.status === "active" ? (
                               <div className="flex flex-col ">
-                                <span className="text-black text-justify flex justify-center">Are you want to<br/> disable this day?</span>
+                                <span className="text-black text-justify flex justify-center">
+                                  Are you want to
+                                  <br /> disable this day?
+                                </span>
                                 <span
                                   className="cursor-pointer text-rose-600 text-center"
                                   onClick={() =>
@@ -247,18 +251,18 @@ function DoctorTimeSchedule() {
                                 </span>
                               </div>
                             ) : (
-
                               <div className="flex flex-col ">
-                              <span className="text-black text-justify flex justify-center">Are you want to<br/> Active this day?</span>
-                              <span
-                                className="cursor-pointer text-green-600 text-center"
-                                onClick={() => activeSchedulDay(schedule._id)}
-                              >
-                                Active
-                              </span>
-                            </div>
-
-                            
+                                <span className="text-black text-justify flex justify-center">
+                                  Are you want to
+                                  <br /> Active this day?
+                                </span>
+                                <span
+                                  className="cursor-pointer text-green-600 text-center"
+                                  onClick={() => activeSchedulDay(schedule._id)}
+                                >
+                                  Active
+                                </span>
+                              </div>
                             )}
                           </td>
                         </tr>

@@ -2,7 +2,6 @@ import React,{useEffect,useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import { message } from 'antd';
 import axios from '../../Axios/Axios'
-import DoctorDashboard from '../../Components/DoctorHome/DoctorDashboard'
 import DoctorTimeSchedule from '../../Components/DoctorHome/DoctorTimeSchedul'
 import DoctorSidebar from '../../Components/DoctorSidebar/DoctorSidebar'
 import Footer from '../../Components/Footer/Footer'
@@ -14,8 +13,6 @@ import { setLogout } from "../../Store/Slice/DoctorSlice";
 function DoctorSchedulePage() {
 
   const dispatch = useDispatch()
-
-
   const navigate = useNavigate()
   const [ refresh , setRefresh ] = useState(false)
   const [doctor,setDoctor] = useState([])
@@ -25,7 +22,6 @@ function DoctorSchedulePage() {
     axios.get(`/doctor/statusChecking`,{headers:{'doctortoken':doctorToken}}).then((response) => {
     const result = response.data
     setDoctor(result.doctor)
-    console.log(result.doctorStatus,"aaa");
     if(result.doctorStatus === "blocked"){
       message.error("Youn have been blocked")
       localStorage.removeItem("doctorToken");
@@ -43,7 +39,7 @@ function DoctorSchedulePage() {
      } 
     })
    
-  },[refresh])
+  },[refresh,dispatch,navigate])
 
   return (
 

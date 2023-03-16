@@ -20,7 +20,6 @@ function DoctorPendingPage() {
       .get(`/doctor/statusChecking`, { headers: { doctortoken: doctorToken } })
       .then((response) => {
         const result = response.data;
-        console.log(result.doctorStatus, "aaa");
         if (result.doctorStatus === "rejected") {
           message.error(
             "Your request has  been rejected for some reason. Please try again"
@@ -45,7 +44,7 @@ function DoctorPendingPage() {
           navigate("/doctor");
         }
       });
-  }, [refresh]);
+  }, [refresh,navigate,dispatch]);
   return (
     <>
       <TopNav />

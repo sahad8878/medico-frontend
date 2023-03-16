@@ -16,13 +16,12 @@ function DoctorDashboardPage() {
   const navigate = useNavigate()
   const [ refresh , setRefresh ] = useState(false)
   const [doctor,setDoctor] = useState([])
+  const doctorTok = JSON.parse(localStorage.getItem('doctorToken'));
+  const doctorToken = doctorTok.doctorToken
   useEffect(()=>{
-    const doctor = JSON.parse(localStorage.getItem('doctorToken'));
-    const doctorToken = doctor.doctorToken
     axios.get(`/doctor/statusChecking`,{headers:{'doctortoken':doctorToken}}).then((response) => {
     const result = response.data
     setDoctor(result.doctor)
-    console.log(result.doctorStatus,"aaa");
     if(result.doctorStatus === "blocked"){
       message.error("Youn have been blocked")
       localStorage.removeItem("doctorToken");
@@ -40,7 +39,7 @@ function DoctorDashboardPage() {
      } 
     })
    
-  },[refresh])
+  },[refresh,doctorToken,navigate])
 
 
 

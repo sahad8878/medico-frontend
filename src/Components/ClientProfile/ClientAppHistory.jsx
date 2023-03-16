@@ -26,7 +26,7 @@ function ClientAppHistory() {
           message.error(response.data.message);
         }
       });
-  }, [refresh]);
+  }, [refresh,clientToken]);
 
   const cancelAppointment = (id) => {
     axios

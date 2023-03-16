@@ -1,1 +1,2 @@
-export default 'https://api.medicoonline.online/';
+const baseUrl = 'https://api.medicoonline.online/';
+export default baseUrl;

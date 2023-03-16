@@ -47,11 +47,11 @@ function AdminLogin() {
     }
   };
   return (
-    <div className="grid grid-cols-3">
-      <div className="col-start-2 border border-black-300 shadow-xl mt-20 py-20 px-10 bg-white rounded-md">
+    <div className="flex justify-center">
+      <div className=" border border-black-300 sm:w-96  shadow-xl mt-20 py-20 px-4 sm:px-10 bg-white rounded-md">
         <div className="w-full  pb-12">
           <h1 className="text-black hover:underline font-mono text-2xl font-bold">
-            Login
+           Admin Login
           </h1>
         </div>
         <form onSubmit={handleLogin}>

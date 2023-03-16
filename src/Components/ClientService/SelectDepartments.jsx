@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { InfinitySpin } from "react-loader-spinner";
 import axios from "../../Axios/Axios";

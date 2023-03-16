@@ -28,7 +28,7 @@ function DoctorProfile() {
           setDoctor(response.data.doctor);
         }
       });
-  }, [refresh]);
+  }, [refresh, doctorToken]);
 
   useEffect(() => {
     axios.get("/doctor/getdepartments").then((response) => {
@@ -120,7 +120,6 @@ function DoctorProfile() {
       doctorImg: data.get("doctorImg"),
       consultationFees: data.get("consultationFees"),
     };
-    console.log(data, "dataaaaa");
     try {
       if (validateFields(data)) {
         setIsLoading(true);
@@ -176,14 +175,12 @@ function DoctorProfile() {
           });
       }
     } catch (error) {
-
       console.log(error);
       message.error("Somthing went wrong!");
     }
   };
 
   return (
-    // <div className="bg-[#D6E8EE]  w-screen border-b-2 border-black ">
     <div className="">
       <div className=" flex justify-center ">
         <h1 className="text-center font-serif text-2xl font-semibold my-5 ">
@@ -196,13 +193,12 @@ function DoctorProfile() {
             <img
               class="w-52 h-52 mb-3 rounded-full shadow-lg"
               src={Doctor.doctorImg}
-              alt="Bonnie image"
+              alt="doctor"
             />
             <h1 className="text-center">
               {Doctor.fName} {Doctor.lName}
             </h1>
           </div>
-          {/*  */}
           <div className="w-full  py-8 md:py-0 px-3">
             <div className="lg:w-[600px]  bg-[#EDF4FE] shadow-2xl pb-10 p-5 sm:p-10 ">
               <div className="mb-4 flex   ">
@@ -530,7 +526,6 @@ function DoctorProfile() {
             </div>
           </div>
         </div>
-        // Cardiologists, audiologists, dentists, ENT specialists, gynecologists, orthopedic surgeons, pediatricians, psychiatrists, veterinarians, radiologists, pulmonologists, endocrinologists, oncologists, neurologists, cardiothoracic surgeons,
       )}
     </div>
   );

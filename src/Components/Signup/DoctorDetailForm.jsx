@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { useNavigate } from "react-router-dom";
 import { InfinitySpin } from "react-loader-spinner";
-import Select from "react-select";
 import { message } from "antd";
 import axios from "../../Axios/Axios";
 

@@ -27,7 +27,7 @@ function ClientProfile() {
         console.log(response);
         setClient(response.data.client);
       });
-  }, [refresh]);
+  }, [refresh,clientToken]);
 
   const handleOpenAddressModal = () => {
     setAddressModal(true);
@@ -178,13 +178,13 @@ function ClientProfile() {
                         <img
                           class="w-52 h-52 mb-3 rounded-full shadow-lg"
                           src={client.clientImage}
-                          alt="Bonnie image"
+                          alt="client"
                         />
                       ) : (
                         <img
                           class="w-52 h-52 mb-3 rounded-full shadow-lg"
                           src={profile}
-                          alt="Bonnie image"
+                          alt="client"
                         />
                       )}
                       <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">

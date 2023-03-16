@@ -14,13 +14,13 @@ function DoctorSidebar({ doctor }) {
             <img
               class="w-52 h-52 mb-3 rounded-full shadow-lg"
               src={doctor.doctorImg}
-              alt="doctor prifile image"
+              alt="doctor prifile "
             />
           ) : (
             <img
               class="w-52 h-52 mb-3 rounded-full shadow-lg"
               src={profile}
-              alt="doctor prifile image"
+              alt="doctor prifile "
             />
           )}
           <h1>

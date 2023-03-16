@@ -1,21 +1,28 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../Axios/Axios";
 import SingleDoctor from "./SingleDoctor";
+import Pagination from "@mui/material/Pagination";
 
 function AdminDoctors() {
   const [doctors, setdoctors] = useState([]);
   const [refresh, setRefresh] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+
   const admin = JSON.parse(localStorage.getItem("adminToken"));
   const adminToken = admin.adminToken;
   useEffect(() => {
     axios
-      .get("/admin/getDoctorsDetails", { headers: { admintoken: adminToken } })
+      .get(`/admin/getDoctorsDetails?page=${currentPage}&limit=5`, { headers: { admintoken: adminToken } })
       .then((response) => {
-        console.log(response.data);
         setdoctors(response.data.doctors);
+        setCurrentPage(response.data.currentPage);
+        setTotalPages(response.data.totalPages);
       });
-  }, [refresh]);
-
+  }, [refresh,currentPage,adminToken]);
+  const handlePageChange = (event, value) => {
+    setCurrentPage(value);
+  };
   return (
     <>
       <div className=" p-6 sm:p-16 h-screen border-gray-200 ">
@@ -63,6 +70,19 @@ function AdminDoctors() {
                 ))}
               </tbody>
             </table>
+
+            {totalPages !== 1 && (
+            <div className="flex justify-center p-2">
+                    <Pagination
+                      count={totalPages}
+                      page={currentPage}
+                      onChange={handlePageChange}
+                      variant="outlined"
+                      shape="rounded"
+                      color="primary"
+                    />
+            </div>
+                  )}
           </div>
         )}
       </div>
