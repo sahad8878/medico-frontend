@@ -61,7 +61,7 @@ function ClientAppHistory() {
                 No Appointments Yet..
               </div>
             ) : (
-              <div className="overflow-auto rounded-lg shadow px-20 pb-20">
+              <div className="overflow-auto rounded-lg shadow md:px-20 px-1 pb-20">
                 <table className="w-full  ">
                   <thead className=" bg-gray-50 border-b-2 border-gray-200">
                     <tr>

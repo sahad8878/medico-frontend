@@ -48,38 +48,39 @@ function DoctorDashboard() {
       <div className="flex justify-center content-center py-5">
         <h1 className="text-2xl font-serif  font-semibold">Dashboard</h1>
       </div>
+      <div className="flex justify-center">
       <div className=" grid grid-cols-1 lg:grid-cols-3  gap-4 p-4 mb-10">
         <div className="flex flex-col w-60 h-24 shadow-xl items-center bg-white opacity-60 border border-gray-200 rounded-lg  md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer">
           <img className=" ml-4 h-14" src={clientIcon} alt="logo" />
-          <div>
-            <h1 className="pl-5 text-black font-bold">Totol Appointments</h1>
-            <span className="flex justify-center text-black font-bold">
+          <div className="flex flex-row md:flex-col md:flex">
+            <h1 className="pl-5 text-black font-bold">Totol Appointments:</h1>
+            <span className="flex justify-center ml-3 md:ml-0 text-black font-bold">
               {totalAppointments}
             </span>
           </div>
         </div>
         <div className="flex flex-col w-60 h-24 shadow-xl items-center bg-white opacity-60 border border-gray-200 rounded-lg  md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer">
           <img className=" ml-4 h-14" src={confirm} alt="logo" />
-          <div>
-            <h1 className="pl-3 text-black font-bold">Checked Appointments</h1>
-            <span className="flex justify-center text-black font-bold">
+          <div className="flex flex-row md:flex-col md:flex">
+            <h1 className="pl-3 text-black font-bold">Checked Appointments:</h1>
+            <span className="flex justify-center ml-3 md:ml-0 text-black font-bold">
               {checkedAppointments}
             </span>
           </div>
         </div>
         <div className="flex flex-col w-60 h-24 shadow-xl items-center bg-white opacity-60 border border-gray-200 rounded-lg  md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer">
           <img className=" ml-4 h-14" src={cancelled} alt="logo" />
-          <div>
+          <div className="flex flex-row md:flex-col md:flex">
             <h1 className="pl-4 text-black font-bold text-justify">
-              Canceled Appointments
+              Canceled Appointments:
             </h1>
-            <span className="flex justify-center text-black font-bold">
+            <span className="flex justify-center ml-3 md:ml-0 text-black font-bold">
               {canceledAppointments}
             </span>
           </div>
         </div>
       </div>
-
+      </div>
       {salesReport.length !== 0 && (
         <div className="overflow-auto rounded-lg shadow ">
           <div className="flex justify-end mr-2">

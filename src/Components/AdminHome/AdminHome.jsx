@@ -37,38 +37,40 @@ function AdminHome() {
           {" "}
           Dashboard
         </h1>
-        <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-2 lg:gap-4 p-4 mb-10">
-          <div className="flex flex-col w-60 h-20 shadow-xl items-center bg-white opacity-60 border border-gray-200 rounded-lg  md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer">
+        <div className="flex justify-center">
+        <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-2 lg:gap-20 p-4 mb-10">
+          <div className="flex flex-col w-60 h-20 shadow-xl  items-center bg-white opacity-60 border border-gray-200 rounded-lg  md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer">
             <img className=" ml-4 h-14" src={clientIcon} alt="logo" />
-            <div>
-              <h1 className="pl-5 text-black font-bold">Totol Patients</h1>
-              <span className="flex justify-center text-black font-bold">
+            <div className="flex flex-row md:flex-col md:flex ">
+              <h1 className="pl-5 text-black font-bold">Totol Patients:</h1>
+              <span className="flex justify-center ml-2 md:ml-0 text-black font-bold">
                 {patients}
               </span>
             </div>
           </div>
           <div className="flex flex-col w-60 h-20 shadow-xl items-center bg-white opacity-60 border border-gray-200 rounded-lg  md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer">
             <img className=" ml-4 h-14" src={doctrsImg} alt="logo" />
-            <div>
+            <div className="flex flex-row md:flex-col md:flex ">
               <h1 className="pl-3 text-black font-bold">Total Doctors</h1>
-              <span className="flex justify-center text-black font-bold">
+              <span className="flex justify-center ml-2 md:ml-0 text-black font-bold">
                 {doctors}
               </span>
             </div>
           </div>
           <div className="flex flex-col w-60 h-20 shadow-xl items-center bg-white opacity-60 border border-gray-200 rounded-lg  md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer">
             <img className=" ml-4 h-14" src={totalAppointment} alt="logo" />
-            <div>
+            <div className="flex flex-row md:flex-col md:flex ">
               <h1 className="pl-4 pr-2 text-black font-bold">
                 Totol Appointments
               </h1>
-
-              <span className="flex justify-center text-black font-bold">
+              <span className="flex justify-center ml-2 md:ml-0 text-black font-bold">
                 {totalAppointments}
               </span>
             </div>
           </div>
         </div>
+      </div>
+
         {salesReport.length !== 0 && (
           <div className="overflow-auto rounded-lg shadow">
             <table className="w-full">
@@ -103,7 +105,7 @@ function AdminHome() {
             </table>
           </div>
         )}
-      </div>
+         </div>
     </>
   );
 }

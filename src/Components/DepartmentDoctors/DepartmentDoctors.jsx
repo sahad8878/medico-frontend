@@ -101,7 +101,7 @@ function DepartmentDoctors() {
           </dir>
 
           <div className=" sm:flex  ">
-            <div className=" flex ml-28 flex-col space-y-4 mt-16 w-44">
+            <div className=" flex ml-28 flex-col space-y-4 sm:mt-16 w-44">
               <div className="flex flex-col">
                 <label className="text-[#194569] font-medium" htmlFor="sortBy">
                   Sort By:

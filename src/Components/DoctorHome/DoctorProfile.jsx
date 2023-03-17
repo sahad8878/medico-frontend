@@ -243,9 +243,9 @@ function DoctorProfile() {
               <div className="flex justify-center">
                 <button
                   onClick={handleOpenModal}
-                  className="px-8 bg-[#194569] rounded-md text-white"
+                  className="px-8 bg-[#194569]  rounded-md text-white"
                 >
-                  Update
+                  UPDATE
                 </button>
               </div>
             </div>

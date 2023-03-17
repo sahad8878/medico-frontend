@@ -168,7 +168,7 @@ function DoctorTimeSchedule() {
           <div>
             {schedule.length === 0 ? (
               <div className="">
-                <div className="flex pt-28 justify-center font-serif text-[#194569] text-xl">
+                <div className="flex md:pt-28 justify-center font-serif text-[#194569] text-xl">
                   Schedule Not Exist..!
                 </div>
 

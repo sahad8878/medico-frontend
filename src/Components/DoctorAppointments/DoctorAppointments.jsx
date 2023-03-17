@@ -93,7 +93,7 @@ function DoctorAppointments() {
         <div>
           {Appointments.length === 0 ? (
             <div>
-              <div className="flex pt-28 justify-center font-serif text-[#194569] text-xl">
+              <div className="flex md:pt-28 justify-center font-serif text-[#194569] text-xl">
                 Appointments Not Exist..! check your history
               </div>
               <div className=" flex justify-center mt-4 content-end">

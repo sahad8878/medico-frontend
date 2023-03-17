@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { message } from "antd";
 import axios from "../../Axios/Axios";
 import Pagination from "@mui/material/Pagination";
-
+import Moment from "react-moment";
 
 function AdminAppointments() {
   const [appointments, setAppointments] = useState([]);
@@ -73,10 +73,10 @@ function AdminAppointments() {
                         {appointment.client.fName}
                       </td>
                       <td className=" p-3 text-sm text-gray-700 whitespace-nowrap">
-                        {appointment.date}
+                      <Moment format="YYYY/MM/DD">{appointment.date}</Moment>
                       </td>
                       <td className=" p-3 text-sm text-gray-700 whitespace-nowrap">
-                        {appointment.time}
+                      {appointment.time}
                       </td>
 
                       <td className=" p-3 text-sm text-gray-700 whitespace-nowrap">
