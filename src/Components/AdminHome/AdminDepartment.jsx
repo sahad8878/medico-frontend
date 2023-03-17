@@ -44,11 +44,9 @@ function AdminDepartment() {
     }
 
     // Validate department
-    const regex = /[#@!^&$]/;
+    
     if (!data.department) {
       errors.department = "Department is required";
-    }else if(regex.test(data.department)){
-      errors.department = "Department name  is invalid";
     }
 
     // Validate description
