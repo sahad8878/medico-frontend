@@ -54,7 +54,6 @@ function DoctorDetails() {
           const result = response.data;
 
           if (result.success) {
-            // navigate('/clientNotificationPage');
             setToken(result.token);
             setSchedulTime(result.schedulTime);
             setShowPaypal(true);
@@ -110,9 +109,7 @@ function DoctorDetails() {
   }
 
   function handleDateChange(date) {
-    console.log(date);
-    const selectedDay = date.toLocaleString("en-us", { weekday: "long" });
-    console.log(selectedDay);
+  const selectedDay = date.toLocaleString("en-us", { weekday: "long" });
     setSelectedDate(date);
     try {
       axios

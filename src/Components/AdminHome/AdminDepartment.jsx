@@ -38,10 +38,17 @@ function AdminDepartment() {
   };
   const validateFields = (data) => {
     let errors = {};
+    
+    if (regex.test(data.departmentImg)) {
+      errors.departmentImg = "Department image should not contain special characters like #@!";
+    }
 
     // Validate department
+    const regex = /[#@!^&$]/;
     if (!data.department) {
       errors.department = "Department is required";
+    }else if(regex.test(data.department)){
+      errors.department = "Department name  is invalid";
     }
 
     // Validate description
