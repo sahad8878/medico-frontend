@@ -19,7 +19,6 @@ const {admin} = useSelector((state) => state.adminLogin)
   const location = useLocation()
 const path = location.pathname
   const handleLogout = () => {
-    localStorage.removeItem('adminToken');
     dispatch(setLogout())
     navigate("/admin")
   };

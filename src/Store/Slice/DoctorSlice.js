@@ -19,6 +19,7 @@ export const DoctorSlice = createSlice({
       state.doctor = null;
       state.name = null;
       state.token = null;
+      localStorage.removeItem('doctorToken')
     },
   },
 });

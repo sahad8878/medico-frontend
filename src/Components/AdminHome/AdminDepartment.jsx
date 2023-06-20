@@ -38,7 +38,7 @@ function AdminDepartment() {
   };
   const validateFields = (data) => {
     let errors = {};
-    
+    const regex = /[#@!]/;
     if (regex.test(data.departmentImg)) {
       errors.departmentImg = "Department image should not contain special characters like #@!";
     }

@@ -18,9 +18,9 @@ function AdminNavbar() {
   const [navbar, setNavbar] = useState(false);
   const dispatch = useDispatch()
 const {admin} = useSelector((state) => state.adminLogin)
-console.log(admin,"adminnnnnnnnnnnnn");
+
   const handleLogout = () => {
-    localStorage.removeItem("adminToken");
+
      dispatch(setLogout())
      navigate("/admin")
   };

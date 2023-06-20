@@ -21,6 +21,7 @@ export const ClientSlice = createSlice({
       state.name = null;
       state.token = null;
       state.count = null;
+      localStorage.removeItem('clientToken')
     },
   },
 });

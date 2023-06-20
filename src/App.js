@@ -27,6 +27,8 @@ import DoctorDetailsPage from './Pages/Client/DoctorDetailsPage'
 import ClientProfilePage from './Pages/Client/ClientProfilePage';
 import AppointmentHistory from './Pages/Client/AppointmentHistory';
 import ClientNotificationPage from './Pages/Client/ClientNotificationPage';
+import Error from './Pages/Error';
+
 
 // doctor pages
 import DoctorDashboardPage from './Pages/Doctor/DoctorDashboardPage';
@@ -49,6 +51,7 @@ import AdminInboxPage from './Pages/Admin/AdminInboxPage';
 import AdminDepartmentPage from './Pages/Admin/AdminDepartmentPage';
 import AdminAppointmentsPage  from './Pages/Admin/AdminAppointmentsPage';
 
+
 function App() {
 
   return (
@@ -56,6 +59,7 @@ function App() {
       <Routes>
         {/* client routes */}
         <Route path="/" element={<LandingPage />} />
+        <Route path="/*" element={<Error/>} />
 
         <Route element={<ClientPublicRoutes/>}>
 

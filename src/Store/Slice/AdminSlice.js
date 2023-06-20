@@ -19,6 +19,7 @@ export const AdminSlice = createSlice({
       state.admin = null;
       state.adminEmail = null;
       state.token = null;
+      localStorage.removeItem('adminToken');
     },
   },
 });
